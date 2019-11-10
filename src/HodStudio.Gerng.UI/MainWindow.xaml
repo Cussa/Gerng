@@ -1,0 +1,35 @@
+﻿<Window x:Class="HodStudio.Gerng.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HodStudio.Gerng.UI"
+        mc:Ignorable="d"
+        Title="Gerng - GitExtensions Release Notes Generator" Height="450" Width="729" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Grid Background="{StaticResource BackgroundBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Margin="4,8">
+            <Label Content="Header format: "/>
+            <TextBox Name="TxtHeaderFormat" Text="## {0}"/>
+            <Label Content="Message format: "/>
+            <TextBox Name="TxtMessageFormat" Text="- **{0:scope}**{0:shortMessage} {0:issue}({0:sha8})"/>
+            <Label Content="Breaking Changes format: "/>
+            <TextBox Name="TxtBreakingChangesFormat" Text="\n\n{0:body}"/>
+            <StackPanel Orientation="Horizontal" Margin="0,8,0,4">
+                <Label Content="Commit from format: "/>
+                <TextBox Name="TxtCommitFromFormat" Width="200" />
+                <Label Content="Commit to format: " Margin="8,0,0,0"/>
+                <TextBox Name="TxtCommitToFormat" Width="200" />
+                <Button Name="BtnGenerate" Content="Generate" Margin="8,0"/>
+            </StackPanel>
+        </StackPanel>
+        <Grid Grid.Row="1">
+            <Border BorderThickness="1" BorderBrush="{StaticResource BorderBrush}" Margin="4,4,4,8" >
+                <TextBox Name="TxtOutput" Text="{Binding Description, Mode=OneWay}" Style="{StaticResource ReadOnlyTextBoxStyle}" TextWrapping="Wrap" />
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
